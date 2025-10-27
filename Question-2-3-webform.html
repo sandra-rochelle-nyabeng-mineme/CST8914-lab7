@@ -48,7 +48,7 @@
         <div class="control">
           <label for="biography">Biography <span class="required">*</span> </label>
           <textarea id="biography" name="biography" type="text" aria-describedby="biography-instructions" required aria-required="true"></textarea>
-          <span id="biography-instructions">Include examples on your skills in JavaScript.</span>
+          <span id="biography-instructions"> Add a biography and include examples on your skills in JavaScript.</span>
         </div>
         
 
@@ -60,9 +60,9 @@
             <input id="gender_male" name="gender" type="radio" value="male" required /><label for="gender_male">Male</label>
           </div>
           <div class="control">
-            <input id="gender_female" name="gender" type="radio" value="female" required /><label for="gender_female">Female</label>
+            <input id="gender_female" name="gender" type="radio" value="female"  tabindex="0" /><label for="gender_female">Female</label>
           </div>
-
+          <!-- i added tabindex because gender_female was unreachable with keyboard-->
           </fieldset>
 
 
