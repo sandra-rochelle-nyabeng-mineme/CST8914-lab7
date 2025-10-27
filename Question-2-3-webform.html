@@ -27,26 +27,56 @@
     </head>
     <body>
         <h1>Feedback form</h1>
+       <!--Each label is now properly connected to its input using the "for" attribute that matches the input’s id  -->
+       <!--Added required and aria-required="true", We marked the mandatory fields (name, biography, gender, and accept_agbs) as required.
+  This helps browsers enforce validation and signals assistive technologies that the field is necessary  -->
+  <!--We used aria-describedby to connect help/instruction text to the corresponding input (so screen readers can read the guidance)  -->
+        <!--The “Gender” radio buttons were wrapped in a <fieldset> with a <legend> for semantic grouping and accessibility. his helps users (and screen readers) understand these options belong to one question.  -->
+         <!-- We provided small hints (like “Include examples on your skills in JavaScript” or “Select one option”) as inline instructions, readable by screen readers using aria-describedby.  -->
+          <!-- We clarified what the * means the field is required  -->
+
     <form>
+      <!-- Full name -->
         <div class="control">
-          <label>Full name <span class="required">*</span></label><input id="name" name="name" type="text" />
+          <label for="name">Full name <span class="required">*</span></label>
+          <input id="name" name="name" type="text" aria-describedby="name-instructions" required aria-required="true" />
+           <span id="name-instructions">Please enter your full name as it appears on official documents.</span>
         </div>
+      
+
+        <!-- Biography -->
         <div class="control">
-          <label>Biography</label><textarea id="biography" name="biography" type="text"></textarea>
-          <span>Include examples on your skills in JavaScript.</span>
+          <label for="biography">Biography <span class="required">*</span> </label>
+          <textarea id="biography" name="biography" type="text" aria-describedby="biography-instructions" required aria-required="true"></textarea>
+          <span id="biography-instructions">Include examples on your skills in JavaScript.</span>
         </div>
         
-          <div>Gender</div>
+
+        <!-- Gender -->
+        <fieldset aria-describedby="gender-help">
+          <legend>Gender<span class="required">*</span></legend>
+         
           <div class="control">
-            <input id="gender_male" name="gender" type="radio" value="male" /><label>Male</label>
+            <input id="gender_male" name="gender" type="radio" value="male" required /><label for="gender_male">Male</label>
           </div>
           <div class="control">
-            <input id="gender_female" name="gender" type="radio" value="female" /><label>Female</label>
+            <input id="gender_female" name="gender" type="radio" value="female" required /><label for="gender_female">Female</label>
           </div>
-        
+
+          </fieldset>
+
+
+
+        <!-- Terms and conditions -->
         <div class="control">
-          <input id="accept_agbs" name="accept_agbs" type="checkbox" value="1" /><label>I accept the terms and conditions</label>
+          <input id="accept_agbs" name="accept_agbs" type="checkbox" value="1" required aria-required="true" /> <label for="accept_agbs">I accept the terms and conditions <span class="required">*</span> </label>
         </div>
+
+                 <!-- Reminder -->
+        <p><span class="required">*</span> indicates a required field.</p>
+
+
+        <!-- Submit -->
         <div class="control">
           <input name="validate" type="hidden" value="1" /><input type="submit" value="Register" />
         </div>
