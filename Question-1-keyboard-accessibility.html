@@ -25,7 +25,7 @@ a{
   color: #006b3a;
 }
 main a{
-  outline: none;
+/* outline: none; */  /* it removes the  focus indicator*/
 }
 h2 {
   margin-top: 0;
@@ -201,12 +201,12 @@ article p {
 
     <div class="container">
       <h1 class="logo">The Funion</h1>
-      
+   
       <!-- Maybe this could be improved with aria-activedescendant later? -->
       <nav class="menu">
         <a href="#">Home</a>
         <a href="#">Politics</a>
-        <a href="#" tabindex="-1">Business</a>
+        <a href="#" >Business</a> <!-- i removed  tabindex="-1" a is a Native elements that receive focus by default-->
         <a href="#">Entertainment</a>
         <a href="#">Sports</a>
         <a href="#" class="btn-search pull-right"><img src="https://raw.githubusercontent.com/udacity/ud891/2de2a0688c68809a3b453db3a24b1a59e8401459/lesson2-focus/02-dom-order/images/search.svg" alt="Search" />Search</a> 
@@ -214,14 +214,8 @@ article p {
       </nav>
     </div>
   </header>
-  <div class="newsletter">
-    <div class="container">
-      <h3>Like the Funion? Consider joining our newsletter!</h3>
-      <input type="text">
-      <button type="button" onfocus="getFocus()">Sign up</button></div>
-      
-    </div>
-  </div>
+ 
+  
   <main class="container">
     <h2 class="offscreen">Top story</h2>
     <article class="main-story">
@@ -243,7 +237,7 @@ article p {
         </div>
         <article>
           <h3 class="headline">Bee wonders if maybe everyone else is a drone and he's the only one who has it "figured out."</h3>
-          <p><a href="#" tabindex="1"><b>Read More</b></a></p>
+          <p><a href="#" <b>Read More</b></a></p>  <!-- i removed  tabindex="1",  a attribute it is a Native elements that receive focus by default-->
           <img src="https://github.com/udacity/ud891/blob/gh-pages/lesson2-focus/02-dom-order/images/bee.jpg?raw=true" alt="A bee on top of a flower" />
         </article>
       </div>
@@ -286,10 +280,20 @@ article p {
     </div>
     
   </main>
-  <!--   stuff can be added here :)
+  <!--   i put the newsletter div here to fix the page tabbing order.-->
   <footer>
+     <div class="newsletter">
+    <div class="container">
+      <h3>Like the Funion? Consider joining our newsletter!</h3>
+     <label for="email">Email address:</label>
+     <input type="text" id="email" name="email">
+
+      <button type="button" onclick="getFocus()">Sign up</button> <!-- i removed onfocus="getFocus()" because it redirects the user to another page when get the focus. A change of context must not occur when an element receives focus. -->
+    </div>
+      
+    </div>
   </footer>
-  -->
+
   
   <script>
     function getFocus() {
