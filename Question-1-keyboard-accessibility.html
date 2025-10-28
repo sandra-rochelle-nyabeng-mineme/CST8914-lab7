@@ -25,7 +25,7 @@ a{
   color: #006b3a;
 }
 
-/* remove outline: none; */  /* it removes the  focus indicator*/
+ /* Removed outline: none; to preserve visible focus indicators */
 
 h2 {
   margin-top: 0;
@@ -206,7 +206,7 @@ article p {
       <nav class="menu">
         <a href="#">Home</a>
         <a href="#">Politics</a>
-        <a href="#" >Business</a> <!-- i removed  tabindex="-1" a is a Native elements that receive focus by default-->
+        <a href="#" >Business</a> <!-- Removed tabindex="-1" to restore native focus -->
         <a href="#">Entertainment</a>
         <a href="#">Sports</a>
         <a href="#" class="btn-search pull-right"><img src="https://raw.githubusercontent.com/udacity/ud891/2de2a0688c68809a3b453db3a24b1a59e8401459/lesson2-focus/02-dom-order/images/search.svg" alt="Search" />Search</a> 
@@ -233,11 +233,12 @@ article p {
     <div class="side-by-side">
       <div class="column">
         <div class="tier-header">
-          <h2 tabindex="0">In the news</h2>
+          <h2 >In the news</h2>  <!-- Removed tabindex="0" since headings are non-interactive -->
         </div>
         <article>
           <h3 class="headline">Bee wonders if maybe everyone else is a drone and he's the only one who has it "figured out."</h3>
-          <p><a href="#" <b>Read More</b></a></p>  <!-- i removed  tabindex="1",  a attribute it is a Native elements that receive focus by default-->
+          <p><a href="#" <b>Read More</b></a></p>  
+           <!-- Removed tabindex attribute; links are focusable by default -->
           <img src="https://github.com/udacity/ud891/blob/gh-pages/lesson2-focus/02-dom-order/images/bee.jpg?raw=true" alt="A bee on top of a flower" />
         </article>
       </div>
@@ -280,15 +281,17 @@ article p {
     </div>
     
   </main>
-  <!--   i put the newsletter div here to fix the page tabbing order.-->
+  <!-- Newsletter moved into footer to maintain logical tab order -->
   <footer>
      <div class="newsletter">
     <div class="container">
       <h3>Like the Funion? Consider joining our newsletter!</h3>
+      
+        <!-- Added label to associate with input field -->
      <label for="email">Email address:</label>
-     <input type="text" id="email" name="email">
-
-      <button type="button" onclick="getFocus()">Sign up</button> <!-- i removed onfocus="getFocus()" because it redirects the user to another page when get the focus. A change of context must not occur when an element receives focus. -->
+     <input type="email" id="email" name="email">
+          <!-- Removed onfocus event to prevent context change on focus -->
+      <button type="button" onclick="getFocus()">Sign up</button> 
     </div>
       
     </div>
